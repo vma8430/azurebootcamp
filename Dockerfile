@@ -1,5 +1,5 @@
 FROM    maven:3.6.0-jdk-8
-LABEL maintainer="Ashish"
+LABEL maintainer="Venkat"
 ENV ORGNAME = ""
 ENV GRIDURL=""
 ENV PAT=""
