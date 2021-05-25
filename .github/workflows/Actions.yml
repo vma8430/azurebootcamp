@@ -26,15 +26,4 @@ jobs:
       with:
           push: true
           tags: vmanian0968/azurebootcamp:latest
-    - name: Copy file
-      uses: canastro/copy-action@0.0.2
-      with:
-    # Source file
-        source: 'docker-compose.yml'
-    # Target file
-        target: '${{ github.workspace }}'
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        path: ${{ github.workspace }}
-        name: drop        
+    
