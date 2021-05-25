@@ -13,12 +13,12 @@ jobs:
       name: Docker Login
       uses: azure/docker-login@v1
       with:
-        login-server: ''
+        login-server: 'https://index.docker.io/v1/'
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build --file **/Dockerfile https://index.docker.io/v1/ vmanian0968/azuredevops-bootcamp --tags latest
-        docker push --file **/Dockerfile https://index.docker.io/v1/ vmanian0968/azuredevops-bootcamp --tags latest
+        docker build --file **/Dockerfile serviceconnection_dockerhub vmanian0968/azuredevops-bootcamp --tags latest
+        docker push --file **/Dockerfile serviceconnection_dockerhub vmanian0968/azuredevops-bootcamp --tags latest
     - run: Copy '/docker-compose.yml' '${{ github.workspace }}'
     - uses: actions/upload-artifact@v2
       with:
