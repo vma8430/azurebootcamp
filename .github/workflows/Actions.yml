@@ -1,4 +1,5 @@
-#Note: login-server needs to be manually set, and the 'REGISTRY_USERNAME' and 'REGISTRY_PASSWORD' secrets are required to be added into GitHub Secrets. See these docs for details: https://github.com/Azure/docker-login
+# - This is the build pipeline to build and push the automated test docker image to Dockerhub 
+
 on:
   push:
     branches:
@@ -26,4 +27,13 @@ jobs:
       with:
           push: true
           tags: vmanian0968/azurebootcamp:latest
-    
+          
+  # - Publishing images to GitHub Packages
+  
+    - name: Build container image
+      uses: docker/build-push-action@v2
+      with:
+          push: true
+          tags: |
+            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.sha }}
+            docker.pkg.github.com/${{ github.repository }}/octo-image:${{ github.ref }}
