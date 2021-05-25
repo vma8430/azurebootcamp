@@ -139,8 +139,8 @@
                         <hub>http://20.81.26.23:8080/wd/hub</hub>
                         <applicationUrl>https://www.saucedemo.com/</applicationUrl>
                         <pat>nujrjk2nis6cz245ql7uecbhzgu3owjndcd7ykgsodlmkywmup6a</pat>
-                        <organization>Workshop-APAC</organization>
-                        <project>AzureBootCamp</project>
+                        <organization>Vmanian0968</organization>
+                        <project>GitHub-Actions</project>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
