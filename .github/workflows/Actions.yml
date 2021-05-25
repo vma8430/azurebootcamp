@@ -1,21 +1,33 @@
-name: Publish Docker image
+#Note: login-server needs to be manually set, and the 'REGISTRY_USERNAME' and 'REGISTRY_PASSWORD' secrets are required to be added into GitHub Secrets. See these docs for details: https://github.com/Azure/docker-login
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+    - master
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  Build_Stage_Build:
+    name: Build and Push
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v2
-        with:
+    - name: Check out the repo
+      uses: actions/checkout@v2
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Log in to GitHub Docker Registry
+      uses: docker/login-action@v1
+      with:
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push to Docker Hub
+      uses: docker/build-push-action@v2
+      with:
           push: true
-          tags: vmanian0968/azurebootcamp:latest                    
+          tags: my-docker-hub-namespace/my-docker-hub-repository:${{ github.ref }}
+    - name: Build container image
+      uses: docker/build-push-action@v2
+      with:
+          push: true
+          tags: docker.pkg.github.com/${{ github.repository }}/my-image:${{ github.ref }}
