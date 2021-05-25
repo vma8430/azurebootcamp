@@ -15,21 +15,11 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-       - task: Docker@2
-         inputs:
-           containerRegistry: 'serviceconnection_dockerhub'
-           repository: 'vmanian0968/azuredevops-bootcamp'
-           tags: latest
-           command: 'buildAndPush'
-           Dockerfile: '**/Dockerfile'
-           
-       - task: CopyFiles@2
-         inputs:
-           Contents: 'docker-compose.yml'	
-           TargetFolder: '$(Build.ArtifactStagingDirectory)'
-           
-       - task: PublishBuildArtifacts@1
-         inputs:
-           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-           ArtifactName: 'drop'
-           publishLocation: 'Container'
+    - task: RunWorkflow@1
+      inputs:
+        gh: 'github.com_vma8430'
+        repo: 'vma8430/AzureBootCamp'
+        workflow: 'blank.yml'
+        ref: 'master'
+              
+       
