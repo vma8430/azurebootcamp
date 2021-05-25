@@ -8,7 +8,7 @@ services:
       - "PAT=${PAT}"
       - "GRIDURL=http://selenium-hub:4444/wd/hub"
       - "ORGNAME=${ORGNAME}"
-    image: "ghoshasish99/azuredevops-bootcamp:latest"
+    image: "vmanian0968/azuredevops-bootcamp:latest"
     volumes: 
       - "./Results/:/functional-test/target/"
   chrome: 
