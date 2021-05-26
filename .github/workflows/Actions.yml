@@ -22,18 +22,15 @@ jobs:
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+    - run: Copy '/docker-compose.yml' '${{ github.workspace }}'
+    - uses: actions/upload-artifact@v2
+      with:
+        path: ${{ github.workspace }}
+        name: drop
+
     - name: Push to Docker Hub
       uses: docker/build-push-action@v2
       with:
           push: true
-          tags: vmanian0968/azurebootcamp:latest
-          
-  # - Publishing images to GitHub Packages
-  
-    - name: Build container image
-      uses: docker/build-push-action@v2
-      with:
-          push: true
-          tags: |
-            docker.pkg.github.com/${{ github.repository }}/my-image:latest}
-            
+          tags: vmanian0968/azurebootcamp:latest         
+ 
