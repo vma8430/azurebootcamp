@@ -1,9 +1,15 @@
 # - This is the build pipeline to build and push the automated test docker image to Dockerhub 
 
 on:
-  push:
-    branches:
-    - master
+    workflow_dispatch:     
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+    push:
+      branches:
+      - master
+    pull_request:
+      branches:
+      - master
 jobs:
   Build_Stage_Build:
     name: Build and Push
