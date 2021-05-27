@@ -1,13 +1,16 @@
-name: CI
+name: Execute Azure Pipelines
 
 # Run this workflow every time a commit is pushed to main or a pull request is opened against main
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches: 
-      - main
+    workflow_dispatch:     
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+    push:
+      branches:
+      - master
+    pull_request:
+      branches:
+      - master
 
 jobs:
     build:
