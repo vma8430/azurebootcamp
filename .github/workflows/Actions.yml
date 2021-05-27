@@ -1,4 +1,4 @@
-# - This is the build pipeline to build and push the automated test docker image to Dockerhub to  Repo 
+# - This is the build pipeline to build and push the automated test docker image to Dockerhub 
 
 on:
     workflow_dispatch:     
