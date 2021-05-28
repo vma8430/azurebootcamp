@@ -1,5 +1,5 @@
 FROM    maven:3.6.0-jdk-8
-LABEL maintainer="Venkat"
+LABEL maintainer="Cloud Charter"
 ENV ORGNAME = ""
 ENV GRIDURL=""
 ENV PAT=""
