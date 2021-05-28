@@ -19,7 +19,6 @@ stages:
       inputs:
         gh: 'github.com_vma8430'
         repo: 'vma8430/azurebootcamp'
-        workflow: 'Actions.yml'
         ref: 'master'
               
        
