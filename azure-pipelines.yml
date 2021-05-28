@@ -18,7 +18,7 @@ stages:
     - task: RunWorkflow@1
       inputs:
         gh: 'github.com_vma8430'
-        repo: 'vma8430/AzureBootCamp'
+        repo: 'vma8430/azurebootcamp'
         workflow: 'Actions.yml'
         ref: 'master'
               
