@@ -33,5 +33,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
           push: true
-          tags: vmanian0968/azurebootcamp:latest         
- 
+          tags: vmanian0968/azurebootcamp:latest
